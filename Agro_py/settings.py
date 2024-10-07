@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'Agro_py.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'agro_py_db',
+        'USER': 'postgres',  # voces devem colocar seu nome de usuário PostgreSQL
+        'PASSWORD': 'sua_senha',  # voces devem colocar senha do PostgreSQL
+        'HOST': 'localhost',  # ou IP do servidor se estiver em rede
+        'PORT': '5432',
     }
 }
 
