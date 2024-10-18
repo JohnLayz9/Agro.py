@@ -15,6 +15,21 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',  # Aumenta o nível de log para DEBUG
+        },
+    },
+}
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -25,8 +40,7 @@ SECRET_KEY = 'django-insecure-a!tng4@o__l97$8a2r6smn9$$=m6^%ipe$w50s@p=ui+pd=p2z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0', '172.26.52.0']
 
 # Application definition
 
@@ -37,6 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'fazendas',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +91,8 @@ WSGI_APPLICATION = 'Agro_py.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'agro_py_db',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
         'USER': 'postgres',  # voces devem colocar seu nome de usuário PostgreSQL
         'PASSWORD': 'sua_senha',  # voces devem colocar senha do PostgreSQL
         'HOST': 'localhost',  # ou IP do servidor se estiver em rede
@@ -107,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'
 
